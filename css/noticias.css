@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05/09/2016, 21:15:49
+    Author     : daniel
+*/
+
+.cuerpo {
+    height: 380px;
+    
+}
+.cuerpo h2{
+    color:  #3c510c;
+}
+.cuerpo h3 {
+    color:  #843534;   
+}
+nav.navbar {
+    background-color: #3c510c;
+    color:  #0066cc;
+}
+nav.navbar ul {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #000000;
+}   
