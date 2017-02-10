@@ -19,14 +19,18 @@
             <?php
             if (isset($_SESSION['nombre'])) {
 
-                if (isset($_SESSION['idpersona'])) {
-                    ?>      
-            <li><a href="mapas.php">Campos</a></li>
-                <?php } ?> 
-            <li><a href="noticias.php">Imagenes</a></li>
+                if (isset($_SESSION['idpersona'])) { ?>
             <li><a href="perfil.php">Perfil</a></li>
+            
+                <?php //  if ($_SESSION['rubro'][1] == "1") {
+                    ?>      
+            <li><a href="productos.php">Productos</a></li>
+                <?php } ?> 
+            <li><a href="">Productores</a></li>
+            
             <li><a href="reportes.php">Reportes</a></li>
-            <?php
+            <?php 
+//                }
             if (isset($_SESSION['perfil'])) {
                 if ($_SESSION['perfil'] == 1) {
                     ?>

@@ -14,7 +14,7 @@
 
 
             <?php
-            include '../controles/tipoconexion.php';
+            include '../controles/conexionmysql.php';
 
             if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
                 $id = $_GET['id'];
@@ -22,15 +22,14 @@
                 $id = $_SESSION['idusuario'];
                 $mail = $_SESSION['mail'];
             }
+            $Verusuario = $pdo->prepare("select * from personas p  where idusuario=:id");
+            $Verusuario->bindparam(':id', $id);
+            $Verusuario->execute();
 
+            
+            if ($Verusuario->rowCount() >0) {
 
-            $texto = "select * from personas2 p  where idusuario=$id";
-
-            $resultado = mysql_query($texto) or die('n resultados');
-//                echo $texto;
-            if (mysql_num_rows($resultado) > 0) {
-
-                $registro = mysql_fetch_assoc($resultado);
+               $registro=$Verusuario->fetch();
 
                 if (isset($registro['idpersonas'])) {
                     if ((!isset($_GET['id']))) {
@@ -157,35 +156,17 @@
                         </div>
 
                 </form>
-<?php ?>
+                <?php ?>
 
             </div>
         </div>
         <script>
             // *************** cuadro de dialogo *************
-            function alerta() {
-                //un alert
-                // prompt dialog
-                alertify.confirm("Esta seguro de Modifcar el registro", function (e) {
-                    // str is the input text
-                    if (e) {
-                        // user clicked "ok"
-                        envio();
-                    } else {
-                        // user clicked "cancel"
-                        alert('Cancelado');
-
-                    }
-                }, "Default Value");
-            }
-
-
-
             //Cuando el formulario con ID acceso se envíe...
             $("#perfil").on("submit", function (e) {
                 //Evitamos que se envíe por defecto
                 e.preventDefault();
-                alerta();
+              envio();
 
 
             });
@@ -213,12 +194,13 @@
                     processData: false,
                     success: function (response) {
                         console.log(response);
+                        console.log("paso po aqui");
 
                     }
 
                 }).done(function () {
                     //Cuando recibamos respuesta, la mostramos
-                    window.location.href = '../index.php';
+//                    window.location.href = '../index.php';
                 });
             }
 

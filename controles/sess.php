@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $consulta->bindparam(':mail', $mail);
         $consulta->bindparam(':clave', md5($password));
         $consulta->execute();
-      
+
         if ($consulta->rowCount() > 0) {
-           while ($resultado = $consulta->fetch()) {
+            while ($resultados = $consulta->fetch()) {
                 $_SESSION['usuario'] = $resultados['mail'];
-                $_SESSION['idusuario'] = $resultados['id_usuario'];
+                $_SESSION['idusuario'] = $resultados['idusuario'];
                 $_SESSION['mail'] = $resultados['mail'];
                 $_SESSION['perfil'] = $resultados['id_perfil'];
 //              $_SESSION['userAgent'] = $_SERVER['HTTP_USER_AGENT'];
@@ -28,16 +28,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //              $ip = !empty($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
 //              $_SESSION['IPaddress'] = $ip;
 
-                $Consultaper ->prepare("select * from personas p  where idusuario=:idusuario");
+                $Consultaper = $pdo->prepare("select * from personas p  where idusuario=:idusuario");
                 $Consultaper->bindparam(':idusuario', $_SESSION['idusuario']);
                 $Consultaper->execute();
-                
-                
+
+
                 if ($Consultaper->rowCount() > 0) {
-                    $Regpersonas = mysql_fetch_assoc($consultapersona);
+                    $Regpersonas = $Consultaper->fetch();
                     $_SESSION['nombre'] = $Regpersonas['nombre'];
                     if (isset($Regpersonas['nombre'])) {
-                        $_SESSION['idpersona'] = $Regpersonas['idpersonas'];
+                        $_SESSION['idpersona'] = $Regpersonas['idpersona'];
+                        $Consulrubro = $pdo->prepare("select * from personas_rubro pr join rubro r on pr.idrubro=r.idrubro  where idpersona=:idpersona");
+                        $Consulrubro->bindparam(':idpersona', $Regpersonas['idpersona']);
+                        $Consulrubro->execute();
+                        if ($Consultaper->rowCount()){
+                            echo "hay";
+                            foreach ($Consultaper->fetch()as $rubro){
+                             $_session['rubro'][]=$rubro['idrubro'];
+                             echo $rubro['idrubro'];
+                            
+                                
+                            }
+                        }
                         $persona = TRUE;
                     } else {
                         $persona = FALSE;

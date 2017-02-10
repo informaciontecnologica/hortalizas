@@ -29,6 +29,7 @@
             <div class="col-md-12  col-lg-offset-3">
                 <?php
                 if (!isset($_SESSION['nombre'])) {
+
                     ?>
 
                     

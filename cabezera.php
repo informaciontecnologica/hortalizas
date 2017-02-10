@@ -37,14 +37,6 @@ echo "
  echo " <script src=\"../bootstrap-3.3.5-dist/js/bootstrap.min.js\" type=\"text/javascript\"></script>
         <link href=\"../bootstrap-3.3.5-dist/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\"/>
        <!-- ideally at the bottom of the page -->
-<!-- also works in the <head> -->
-<script src=\"../jquery/alertify.js-0.3.11/lib/alertify.min.js\" type=\"text/javascript\"></script>
-<link href=\"../jquery/alertify.js-0.3.11/themes/alertify.core.css\" rel=\"stylesheet\" type=\"text/css\"/>
-<link href=\"../jquery/alertify.js-0.3.11/themes/alertify.default.css\" rel=\"stylesheet\" type=\"text/css\"/>
-<script src=\"../jquery/angular.min.js\" type=\"text/javascript\"></script>
 
-   <script src=\"../bootstrap-validator-master/dist/validator.min.js\" type=\"text/javascript\"></script>
-
-            <script src=\"../bootstrap-validator-master/js/validator.js\" type=\"text/javascript\"></script>
         ";
 
