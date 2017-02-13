@@ -12,7 +12,7 @@ and open the template in the editor.
         
     </head>
     <body class="container">
-        <h3>Sistema de monitoreo de la Vegetación</h3>
+        <h3>Mercado Abierto Horticola</h3>
         <a name="arriba"></a>
         <div class="row">
             <div class="col-md-6">

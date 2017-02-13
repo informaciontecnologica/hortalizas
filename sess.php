@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pdo = new Conexion();
         $consulta = $pdo->prepare("Select * from usuario  where mail=:mail and clave=:clave");
         $consulta->bindparam(':mail', $mail);
-        $consulta->bindparam(':clave',md5($password));
+        $consulta->bindparam(':clave', $password);
         $consulta->execute();
 
-        if ($consulta->rowCount() > 0) {
+//        if ($consulta->rowCount() > 0) {
             while ($resultados = $consulta->fetch()) {
                 $_SESSION['usuario'] = $resultados['mail'];
                 $_SESSION['idusuario'] = $resultados['idusuario'];
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
                 if ($Consultaper->rowCount() > 0) {
+                    echo "pap";
                     $Regpersonas = $Consultaper->fetch();
                     $_SESSION['nombre'] = $Regpersonas['nombre'];
                     if (isset($Regpersonas['nombre'])) {
@@ -61,10 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     exit;
                 }
             }
-        } else {
-            header("location: ../vistas/errorsession.php");
-            exit;
-        }
+//        } else {
+//            header("location: ../vistas/errorsession.php");
+//            exit;
+//        }
         mysql_free_result($seleccion);
     }
 } 

@@ -26,19 +26,7 @@ and open the template in the editor.
 //                if (!isset($_SESSION['rubro'])) {
 //                    echo "existe";
 //                }
-                include '../controles/conexionmysql.php';
-                $Consulrubro = $pdo->prepare("select r.* from personas_rubro pr join rubro r on pr.idrubro=r.idrubro  where idpersona=:idpersona");
-                $Consulrubro->bindparam(':idpersona',$_SESSION['idpersona']);
-                $Consulrubro->execute();
-                
-                if ($Consulrubro->rowCount()) {
-                                  
-                    while($rubro =$Consulrubro->fetch()) {
-                        
-                   $_SESSION['ids'][] = $rubro['rubro'];
-                        
-                }}
-                print($_SESSION['ids'][0][2]);
+               
                     ?>
                 </div>
             </section>

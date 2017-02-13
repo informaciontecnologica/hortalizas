@@ -2,7 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <?php include'../cabezera.php' ?>
+        <?php include'../cabezera.php';
+        ?>
 
 
     </head>
@@ -14,8 +15,8 @@
 
 
             <?php
-            include '../controles/conexionmysql.php';
-
+            include '../controles/clases/conexion.php';
+            $pdo = new Conexion();
             if ((isset($_GET['id'])) && (!empty($_GET['id']))) {
                 $id = $_GET['id'];
             } else {
@@ -26,18 +27,18 @@
             $Verusuario->bindparam(':id', $id);
             $Verusuario->execute();
 
-            
-            if ($Verusuario->rowCount() >0) {
 
-               $registro=$Verusuario->fetch();
+            if ($Verusuario->rowCount() > 0) {
 
-                if (isset($registro['idpersonas'])) {
+                $registro = $Verusuario->fetch();
+
+                if (isset($registro['idpersona'])) {
                     if ((!isset($_GET['id']))) {
-                        $_SESSION['idpersona'] = $registro['idpersonas'];
+                        $_SESSION['idpersona'] = $registro['idpersona'];
                     }
                 }
                 $mail = $registro['mail'];
-                $idpersonas = $registro['idpersonas'];
+                $idpersona = $registro['idpersona'];
                 $nombre = $registro['nombre'];
                 $apellido = $registro['apellido'];
                 $nacimiento = $registro['nacimiento'];
@@ -91,34 +92,36 @@
             </div>   
 
             <div class="row">
+                <div class="col-md-6">
                 <form class="form-horizontal" role="form" id="perfil"  >
 
                     <div class="form-group">  
-                        <div class="col-md-5 col-xs-12">
+                        <div class="col-md-12 col-xs-12">
                             <label >Mail</label>
                             <input class="form-control" type="email" ng-model="mail" name="mail" required  autofocus value="<?php echo $mail ?>" />
                             <input type="hidden" name="idusuario" ng-model="idusuario" value="<?php echo $_SESSION['idusuario'] ?>"/>
-                            <input type="hidden" name="idpersonas" ng-model="idpersonas" value="<?php echo $idpersonas ?>"/>
+                            <input type="hidden" name="idpersona"  value="<?php echo $idpersona ?>"/>
+
                         </div>
                     </div>
 
                     <div class="form-group">  
 
-                        <div class="col-md-3 col-lg-3 col-xs-5">
+                        <div class="col-md-10  col-xs-5">
                             <label >Nombre</label>
                             <input   class="form-control" type="text" ng-model="nombre" required  name="nombre" value="<?php echo $nombre ?>" />
                         </div>
                     </div>
                     <div class="form-group">  
 
-                        <div class="col-md-3 col-lg-3 col-xs-5">
+                        <div class="col-md-10 col-lg-10 col-xs-5">
                             <label >Apellido</label>
                             <input   class="form-control" type="text" ng-model="apellido" required  name="apellido" value="<?php echo $apellido ?>" />
                         </div>
                     </div>
                     <div class="form-group">  
 
-                        <div class="col-md-3 col-lg-3 col-xs-5"> 
+                        <div class="col-md-8 col-lg-5 col-xs-5"> 
                             <label>Nacimiento</label>
                             <input   class="form-control" type="date" ng-model="nacimiento" required  name="nacimiento" value="<?php echo $nacimiento ?>" />
                         </div>
@@ -139,25 +142,43 @@
                     </div>
                     <div class="form-group">  
 
-                        <div class="col-md-5 col-lg-3 col-xs-12"> 
+                        <div class="col-md-12 col-lg-12 col-xs-12"> 
                             <label >Dirección</label>
                             <input   class="form-control" type="text" ng-model="direccion" required  name="direccion" value="<?php echo $direccion ?>"/>
                         </div>
                     </div>
-                    <!--                        <div class="form-group">  
-                                                <label class="control-label col-sm-2 ">Área</label>
-                                                <div class="col-md-3 col-lg-4">
-                                                    <input  class="form-control" type="text" ng-model="area" required size="60" name="area" value="<?php echo "'POLYGON((12 21,11 11,22 22,12 21))',0" ?>"/>
-                                                </div>
-                                            </div>-->
+<!--                    <div class="form-group">  
+                        <div class="col-md-5 col-lg-3 col-xs-12"> 
+                            <label >Tipos de Rubros</label>
+                            <ul>
+                                <?php
+//                            require_once '../controles/clases/rubro.php';
+//                            $rubro = Rubro::RubroidPersona(6);
+                            
+                            ?>
+
+                              
+                            </ul>
+                            
+                        </div>
+                    </div>-->
+
                     <div class="form-group">  
                         <div class="col-md-offset-2 col-md-12 col-lg-12 col-xs-3">
                             <input   class="btn btn-primary" type="submit" value="Modificar" />
                         </div>
-
+                    </div>
                 </form>
                 <?php ?>
-
+                </div>
+                <div class="col-md-5">
+                    <div class="panel panel-primary">
+                        
+                        <div class="panel-heading">Foto </div>
+                        <div style="width: 200px; height: 300px; margin: auto; padding: 15px;"><img width="250" height="250" class="img-circle " src="../imagenes/perfil/avatar/jorge.jpg"></img></div>
+                            
+                    </div>
+                </div>
             </div>
         </div>
         <script>
@@ -166,7 +187,7 @@
             $("#perfil").on("submit", function (e) {
                 //Evitamos que se envíe por defecto
                 e.preventDefault();
-              envio();
+                envio();
 
 
             });

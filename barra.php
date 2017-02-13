@@ -19,55 +19,67 @@
             <?php
             if (isset($_SESSION['nombre'])) {
 
-                if (isset($_SESSION['idpersona'])) { ?>
-            <li><a href="perfil.php">Perfil</a></li>
-            
-                <?php //  if ($_SESSION['rubro'][1] == "1") {
-                    ?>      
-            <li><a href="productos.php">Productos</a></li>
-                <?php } ?> 
-            <li><a href="">Productores</a></li>
-            
-            <li><a href="reportes.php">Reportes</a></li>
-            <?php 
-//                }
-            if (isset($_SESSION['perfil'])) {
-                if ($_SESSION['perfil'] == 1) {
+                if (isset($_SESSION['idpersona'])) {
                     ?>
-                    <li><a href="usuarios.php">Usuarios</a></li>    
-
+                    <li><a href="Bolsa.php">Bolsa</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                     <?php
-                }
-                 if (($_SESSION['perfil'] == 1) ||($_SESSION['perfil'] == 3) ) {
+                    ////// rubros /////////////////
+
+                    if (isset($_SESSION['rubro'])) {
+                        if ($_SESSION['rubro'][0][0] == 1) {
+                            ?>
+
+                            <li><a href="productos.php">Productos</a></li>
+                            <?php
+                        }
+                        if ($_SESSION['rubro'][1][0] == 2) {
+                            ?>
+                            <li><a href="comerciante.php">Comerciante</a></li>
+
+                            <?php
+                        }
+                    }
                     ?>
-                    <li><a href="sig.php" title="Registros de mapas Sig" >Sig</a></li>    
-
                     <?php
+                    if (isset($_SESSION['perfil'])) {
+                        if ($_SESSION['perfil'] == 1) {
+                            ?>
+                            <li><a href="usuarios.php">Usuarios</a></li>    
+
+                            <?php
+                        }
+                        if (($_SESSION['perfil'] == 1) || ($_SESSION['perfil'] == 3)) {
+                            ?>
+                            <li><a href="sig.php" title="Registros de mapas Sig" >Sig</a></li>    
+
+                            <?php
+                        }
+                    }
                 }
-                
             }
-        }
-        if (!isset($_SESSION['nombre'])) {
-            ?>
-            <li><a href="ingresar.php">Ingresar</a></li>
+            if (!isset($_SESSION['nombre'])) {
+                ?>
+                <li><a href="ingresar.php">Ingresar</a></li>
 
-        <?php } else {
+            <?php } else {
+                ?>
+                <li><a href="logout.php">Salir</a></li>
+                <li><a href="ayuda.php" class="glyphicon glyphicon-question-sign"></a></li>
+            </ul>
+            <?php
+        }
+
+
+
+        if (isset($_SESSION['nombre'])) {
             ?>
-            <li><a href="logout.php">Salir</a></li>
-            <li><a href="ayuda.php" class="glyphicon glyphicon-question-sign"></a></li>
-      </ul>
-           <?php
-    }
-    
-            
-     
-        if (isset($_SESSION['nombre'])) { 
+            <ul class="nav  navbar-nav navbar-right  ">
+                <li><a href=""><span class="badge"><?php echo $_SESSION['nombre'] ?> </span> </a>       
+                </li>
+            </ul>   
+        <?php }
         ?>
-        <ul class="nav  navbar-nav navbar-right  ">
-            <li><a href=""><span class="badge"><?php echo $_SESSION['nombre'] ?> </span> </a>       
-                 </li>
-        </ul>   
-    <?php } ?>
 
 
     </div>

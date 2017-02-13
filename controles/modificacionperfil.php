@@ -6,15 +6,14 @@
  * and open the template in the editor.
  */
 session_start();
-require('conexionmysql.php');
-
+require('clases/conexion.php');
+$pdo=new Conexion();
 //Obtenemos los datos del formulario de registro
 $mail = $_POST['mail'];
-if (empty($_POST['idpersonas'])) {
-    $idpersonas = $_POST['idpersonas'];
-} else {
-    $idpersonas = $_POST['idpersonas'];
-}
+if (!empty($_POST['idpersona'])) {
+    $idpersona = $_POST['idpersona'];
+} 
+
 
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
@@ -43,14 +42,14 @@ $consultaUsuarios->bindparam(':documento', $documento);
 $consultaUsuarios->execute();
 if ($consultaUsuarios->rowCount() > 0) {
     $ExistDocumento = true;
-    $datosConsultaUsuarios = $consulta->fetch();
+    $datosConsultaUsuarios = $consultaUsuarios->fetch();
     $documento1 = $datosConsultaUsuarios['documento'];
 }
 
 
 //Si el input de usuario o contraseña está vacío, mostramos un mensaje de error
 //Si el valor del input del usuario es igual a alguno que ya exista, mostramos un mensaje de error
-if (empty($_POST['idpersonas'])) {
+if (empty($_POST['idpersona'])) {
 
 
     $consulta = $pdo->prepare("INSERT INTO `personas` (nombre,apellido,nacimiento,
@@ -88,29 +87,29 @@ if (empty($_POST['idpersonas'])) {
             telefono= :telefono,
             direccion= :direccion,
             documento=:documento 
-            where idpersonas=:idpersonas ");
-    $consulta->bindparam(':nombre', $nombre);
-    $consulta->bindparam(':apellido', $apellido);
-    $consulta->bindparam(':nacimiento', $nacimiento);
-    $consulta->bindparam(':mail', $mail);
-    $consulta->bindparam(':telefono', $telefono);
-    $consulta->bindparam(':direccion', $direccion);
-    $consulta->bindparam(':documento', $documento);
-    $consulta->bindparam(':idpersonas', $idpersonas);
-    $consulta->execute();
+            where idpersona=:idpersona ");
+    $Actualizar->bindparam(':nombre', $nombre);
+    $Actualizar->bindparam(':apellido', $apellido);
+    $Actualizar->bindparam(':nacimiento', $nacimiento);
+    $Actualizar->bindparam(':mail', $mail);
+    $Actualizar->bindparam(':telefono', $telefono);
+    $Actualizar->bindparam(':direccion', $direccion);
+    $Actualizar->bindparam(':documento', $documento);
+    $Actualizar->bindparam(':idpersona',$idpersona  );
+    $Actualizar->execute();
 
     //Si los datos se introducen correctamente, mostramos los datos
     //Sino, mostramos un mensaje de error, GeomFromText($area)
-    if ($consulta->rowCount()) {
+    if ($Actualizar) {
         $ok = TRUE;
         die('Registrado con éxito <br>' .
                 'Se a modificado el Perfil<br>');
     } else {
         $ok = FALSE;
-        die($consulta);
+        die($Actualizar);
     }
 }
-if ($ok) {
-    $_SESSION['nombre'] = $nombre;
-}
+//if ($ok) {
+//    $_SESSION['nombre'] = $nombre;
+//}
 
