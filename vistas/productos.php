@@ -3,16 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <?php include'../cabezera.php' ?>
-
-
-
     </head>
     <body  >
         <header>
             <?php include '../barra.php'; ?> 
-
-
-
         </header> 
 
         <div class="container">
@@ -21,91 +15,124 @@
                 <div class="navbar navbar-default" style="background: tomato; color:#ccffff  " role="navigation">
                     <div class="navbar-header"><a class="navbar-brand " href="#">Productos</a></div>
                     <ul class="nav navbar-nav">
-
+                        <li><a href="ayuda.php?tag=password" class="">Nuevo</a></li>
+                        <li><a href="ayuda.php?tag=password" class="">Todos</a></li>
+                        <li><a href="ayuda.php?tag=password" class="">Publicados</a></li>
+                        <li><a href="ayuda.php?tag=password" class="">Acordados</a></li>
+                        <li><a href="ayuda.php?tag=password" class="">Suspenso</a></li>
                         <li><a href="ayuda.php?tag=password" class="glyphicon glyphicon-question-sign"></a></li>
 
                     </ul>
                 </div>
-
-
-
-                <form id="Cambiopassword" data-toggle="validator" class="form-horizontal" role="form" >
-                    <div class="form-group">
-                        <label for="siembra" class="control-label col-sm-2 ">Fecha Siembra</label>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" id="fechasiembra" name="fechasiembra" placeholder="Fecha Siembra"  
-                                   data-minlength="1" required/>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Cantidad" class="control-label col-sm-2 ">Cantidad</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="superfice" name="superficie" placeholder="Superficie Sembrada"  
-                                   data-minlength="1" required/>
-                            <span class="help-block">Mínimo un (1) digitos</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cosecha" class="control-label col-sm-2 ">Fecha Cosecha</label>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" id="fechacosecha" name="fechacosecha" placeholder="Fecha Cosecha"  
-                                   data-minlength="1" required/>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="CantidadEs" class="control-label col-sm-2 ">Cantidad Estimada</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="cantidadestimada" name="cantidadestimada" placeholder="cantidadestimada"  
-                                   data-minlength="1" required/>
-                            <span class="help-block">Mínimo un (1) digitos</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="Productos" class="control-label col-sm-2 ">Productos</label>
-                        <div class="col-md-4">
-                            <select name="Productos" multiple="multiple">
-                                <option></option>
-                                <option>Lechuga</option>
-                                <option>Zapallo</option>
-                                <option>Zanahoria</option>
-                                <option>Apio</option>
-                                <option>Tomate</option>
-                                <option>Morron</option>
-                                <option>Perejil</option>
-                                <option>Oregano</option>
-
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="Observaciones" class="control-label col-sm-2 ">Observaciones</label>
-                        <div class="col-md-4">     
-                            <textarea class="form-control" id="Observacion" placeholder="Observacion" >
-                            </textarea>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Aceptar</button>
-                        </div>
-                </form>
-
-
-
-                <div id="dialog-confirm" title="Información">
-                    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
-                        <span id="mensaje"></span> </p>
-                </div>
-                <span id="mensaje1"></span> 
-
-
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form id="Cambiopassword" class="form-horizontal" role="form" >
+                        <div class="form-group ">
+                            <div class="col-md-5">
+                                <label for="siembra" class="control-label  ">Fecha Siembra</label>
+                                <input type="date" class="form-control " id="fechasiembra" name="fechasiembra" placeholder="Fecha Siembra"  
+                                       data-minlength="1" required/>
+                            </div>
+                        </div>
+                        <div class="panel-info">
+                            <div class="form-group">
+
+                                <div class="col-md-5">
+                                    <label for="Cantidad" class="control-label  ">Cantidad</label>
+                                    <input type="text" class="form-control" id="superfice" name="superficie" placeholder="Superficie m2"  
+                                           data-minlength="1" required/>
+                                </div>
+
+                            </div>   
+                            <div class="form-group">
+
+                                <div class="col-md-5">
+                                    <label for="Cantidad" class="control-label  ">Lineos</label>
+                                    <span class="glyphicon glyphicon-question-sign"></span>
+                                    <input type="text" class="form-control"  title="Cada lineos se concidera 50 mts. de largo y el espacio entre 
+                                           lineos es 90 cm."id="superfice" name="superficie" placeholder="Cantidad de lineos"  
+                                           data-minlength="1" required/>
+                                </div>
+
+                            </div> 
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="cosecha" class="control-label  ">Fecha Cosecha</label>
+                                <input type="date" class="form-control" id="fechacosecha" name="fechacosecha" placeholder="Fecha Cosecha"  
+                                       data-minlength="1" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="Cantidades" class="control-label c ">Producción Estimada</label>
+                                <div class="list-inline">
+                                    <input type="text" class="form-control" id="produccionestimada" name="produccionestimada" placeholder="Producción estimada"  
+                                           required/>
+                                    
+                                    <select name="Productos" class="form-control">
+
+                                        <option value="u">Un</option>
+                                        <option value="kg">kg</option>
+                                        <option  value="tn">tn</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="Productos" class="control-label">Productos</label>
+                                <select name="Productos" multiple="multiple">
+                                    <option></option>
+                                    <option>Lechuga</option>
+                                    <option>Zapallo</option>
+                                    <option>Zanahoria</option>
+                                    <option>Apio</option>
+                                    <option>Tomate</option>
+                                    <option>Morron</option>
+                                    <option>Perejil</option>
+                                    <option>Oregano</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <label for="Observaciones" class="control-label ">Observaciones</label>
+
+                                <textarea class="form-control" id="Observacion" placeholder="Observacion" >
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>   
+                    </form>
+
+                </div>
+                <div class="col-md-5 ">
+                    <form id="publicar" class="form-horizontal" role="form" >
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="Publicar" class="control-label ">Publicar</label>
+                                <input class="form-control"  type="checkbox" name="publicar" value="ON" />
+                            </div>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="dialog-confirm" title="Información">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                <span id="mensaje"></span> </p>
+        </div>
+        <span id="mensaje1"></span>      
         </div>
         <script>
             var formData = new FormData(document.getElementById("Cambiopassword"));

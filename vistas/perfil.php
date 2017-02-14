@@ -4,8 +4,6 @@
     <head>
         <?php include'../cabezera.php';
         ?>
-
-
     </head>
     <body>
         <header>
@@ -93,91 +91,107 @@
 
             <div class="row">
                 <div class="col-md-6">
-                <form class="form-horizontal" role="form" id="perfil"  >
+                    <form class="form-horizontal" role="form" id="perfil"  >
 
-                    <div class="form-group">  
-                        <div class="col-md-12 col-xs-12">
-                            <label >Mail</label>
-                            <input class="form-control" type="email" ng-model="mail" name="mail" required  autofocus value="<?php echo $mail ?>" />
-                            <input type="hidden" name="idusuario" ng-model="idusuario" value="<?php echo $_SESSION['idusuario'] ?>"/>
-                            <input type="hidden" name="idpersona"  value="<?php echo $idpersona ?>"/>
+                        <div class="form-group">  
+                            <div class="col-md-12 col-xs-12">
+                                <label >Mail</label>
+                                <input class="form-control" type="email" ng-model="mail" name="mail" required  autofocus value="<?php echo $mail ?>" />
+                                <input type="hidden" name="idusuario" ng-model="idusuario" value="<?php echo $_SESSION['idusuario'] ?>"/>
+                                <input type="hidden" name="idpersona"  value="<?php echo $idpersona ?>"/>
 
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">  
-
-                        <div class="col-md-10  col-xs-5">
-                            <label >Nombre</label>
-                            <input   class="form-control" type="text" ng-model="nombre" required  name="nombre" value="<?php echo $nombre ?>" />
+                        <div class="form-group">  
+                            <div class="col-md-10  col-xs-5">
+                                <label >Nombre</label>
+                                <input   class="form-control" type="text" ng-model="nombre" required  name="nombre" value="<?php echo $nombre ?>" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">  
+                        <div class="form-group">  
 
-                        <div class="col-md-10 col-lg-10 col-xs-5">
-                            <label >Apellido</label>
-                            <input   class="form-control" type="text" ng-model="apellido" required  name="apellido" value="<?php echo $apellido ?>" />
+                            <div class="col-md-10 col-lg-10 col-xs-5">
+                                <label >Apellido</label>
+                                <input   class="form-control" type="text" ng-model="apellido" required  name="apellido" value="<?php echo $apellido ?>" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">  
+                        <div class="form-group">  
 
-                        <div class="col-md-8 col-lg-5 col-xs-5"> 
-                            <label>Nacimiento</label>
-                            <input   class="form-control" type="date" ng-model="nacimiento" required  name="nacimiento" value="<?php echo $nacimiento ?>" />
+                            <div class="col-md-8 col-lg-5 col-xs-5"> 
+                                <label>Nacimiento</label>
+                                <input   class="form-control" type="date" ng-model="nacimiento" required  name="nacimiento" value="<?php echo $nacimiento ?>" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">  
+                        <div class="form-group">  
 
-                        <div class="col-md-3 col-lg-3 col-xs-5"> 
-                            <label >Documento</label>
-                            <input   class="form-control" type="number" ng-model="documento" required  name="documento" value="<?php echo $documento ?>" />
+                            <div class="col-md-3 col-lg-3 col-xs-5"> 
+                                <label >Documento</label>
+                                <input   class="form-control" type="number" ng-model="documento" required  name="documento" value="<?php echo $documento ?>" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">  
+                        <div class="form-group">  
 
-                        <div class="col-md-3 col-lg-3 col-xs-5">
-                            <label >Teléfono</label>
-                            <input   class="form-control" type="tel" ng-model="telefono" required  name="telefono" value="<?php echo $telefono ?>"/>
+                            <div class="col-md-3 col-lg-3 col-xs-5">
+                                <label >Teléfono</label>
+                                <input   class="form-control" type="tel" ng-model="telefono" required  name="telefono" value="<?php echo $telefono ?>"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">  
+                        <div class="form-group">  
 
-                        <div class="col-md-12 col-lg-12 col-xs-12"> 
-                            <label >Dirección</label>
-                            <input   class="form-control" type="text" ng-model="direccion" required  name="direccion" value="<?php echo $direccion ?>"/>
+                            <div class="col-md-12 col-lg-12 col-xs-12"> 
+                                <label >Dirección</label>
+                                <input   class="form-control" type="text" ng-model="direccion" required  name="direccion" value="<?php echo $direccion ?>"/>
+                            </div>
                         </div>
-                    </div>
-<!--                    <div class="form-group">  
-                        <div class="col-md-5 col-lg-3 col-xs-12"> 
-                            <label >Tipos de Rubros</label>
-                            <ul>
-                                <?php
+                        <!--                    <div class="form-group">  
+                                                <div class="col-md-5 col-lg-3 col-xs-12"> 
+                                                    <label >Tipos de Rubros</label>
+                                                    <ul>
+                        <?php
 //                            require_once '../controles/clases/rubro.php';
 //                            $rubro = Rubro::RubroidPersona(6);
-                            
-                            ?>
+                        ?>
+                        
+                                                      
+                                                    </ul>
+                                                    
+                                                </div>
+                                            </div>-->
 
-                              
-                            </ul>
-                            
-                        </div>
-                    </div>-->
 
-                    <div class="form-group">  
-                        <div class="col-md-offset-2 col-md-12 col-lg-12 col-xs-3">
-                            <input   class="btn btn-primary" type="submit" value="Modificar" />
+
+                        <div class="form-group">  
+                            <div class="col-md-offset-2 col-md-12 col-lg-12 col-xs-3">
+                                <input   class="btn btn-primary" type="submit" value="Modificar" />
+                            </div>
                         </div>
-                    </div>
-                </form>
-                <?php ?>
+                    </form>
+                    <?php ?>
                 </div>
                 <div class="col-md-5">
-                    <div class="panel panel-primary">
-                        
-                        <div class="panel-heading">Foto </div>
-                        <div style="width: 200px; height: 300px; margin: auto; padding: 15px;"><img width="250" height="250" class="img-circle " src="../imagenes/perfil/avatar/jorge.jpg"></img></div>
-                            
+                      <form class="form-horizontal" role="form" id="foto"  >
+                    <div class="panel panel-info">
+                     <div class="panel-heading">Foto </div>
+                        <div style="width: 150px; height: 250px; margin: auto; padding: 15px;"><img width="200" height="200" class="img-circle " src="../imagenes/perfil/avatar/jorge.jpg"></img></div>
+
                     </div>
+                      </form>
+                     <form class="form-horizontal" role="form" id="predio"  >
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Detalle de Predio</div>
+                        <div class="panel-body">
+                        <div class="form-group"> 
+                            <div class="col-md-5  col-xs-3">
+                                <label >Superficie del Predio o finca</label>
+                                <div class="col-md-6  col-xs-3">
+                                    <input   class="form-control" type="number" ng-model="supfinca" required  name="supfinca" value="<?php echo $supfinca ?>" />
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                     </form>
                 </div>
             </div>
         </div>
