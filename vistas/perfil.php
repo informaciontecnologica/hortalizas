@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <?php include'../cabezera.php';
-        ?>
+        ?><script src="../js/perfil.js" type="text/javascript"></script>
     </head>
     <body>
+        
         <header>
             <?php include '../barra.php'; ?> 
         </header> 
@@ -144,22 +145,6 @@
                                 <input   class="form-control" type="text" ng-model="direccion" required  name="direccion" value="<?php echo $direccion ?>"/>
                             </div>
                         </div>
-                        <!--                    <div class="form-group">  
-                                                <div class="col-md-5 col-lg-3 col-xs-12"> 
-                                                    <label >Tipos de Rubros</label>
-                                                    <ul>
-                        <?php
-//                            require_once '../controles/clases/rubro.php';
-//                            $rubro = Rubro::RubroidPersona(6);
-                        ?>
-                        
-                                                      
-                                                    </ul>
-                                                    
-                                                </div>
-                                            </div>-->
-
-
 
                         <div class="form-group">  
                             <div class="col-md-offset-2 col-md-12 col-lg-12 col-xs-3">
@@ -170,76 +155,35 @@
                     <?php ?>
                 </div>
                 <div class="col-md-5">
-                      <form class="form-horizontal" role="form" id="foto"  >
-                    <div class="panel panel-info">
-                     <div class="panel-heading">Foto </div>
-                        <div style="width: 150px; height: 250px; margin: auto; padding: 15px;"><img width="200" height="200" class="img-circle " src="../imagenes/perfil/avatar/jorge.jpg"></img></div>
-
-                    </div>
-                      </form>
-                     <form class="form-horizontal" role="form" id="predio"  >
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Detalle de Predio</div>
-                        <div class="panel-body">
-                        <div class="form-group"> 
-                            <div class="col-md-5  col-xs-3">
-                                <label >Superficie del Predio o finca</label>
-                                <div class="col-md-6  col-xs-3">
-                                    <input   class="form-control" type="number" ng-model="supfinca" required  name="supfinca" value="<?php echo $supfinca ?>" />
+                    <form class="form-horizontal" role="form" id="foto"  >
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Foto </div>
+                            <div style="width: 150px; height: 250px; margin: auto; padding: 15px;">
+                                <img  onclick="" width="200" height="200" class="img-circle" src="../imagenes/perfil/avatar/<?php echo $foto; ?>"></img></div>
+                                <input type="file" value="Cambiar Foto" name="file" />
+                                <input type="hidden" name="idpersona" value="<?php echo $_SESSION['idpersona'] ?>" />
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form" id="predio"  >
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Detalle de Predio</div>
+                            <div class="panel-body">
+                                <div class="form-group"> 
+                                    <div class="col-md-5  col-xs-3">
+                                        <label>Superficie del Predio o finca</label>
+                                        <div class="col-md-6  col-xs-3">
+                                            <input   class="form-control" type="number" ng-model="supfinca" required  name="supfinca" value="<?php echo $supfinca ?>" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
-                     </form>
+                    </form>
                 </div>
             </div>
         </div>
-        <script>
-            // *************** cuadro de dialogo *************
-            //Cuando el formulario con ID acceso se envíe...
-            $("#perfil").on("submit", function (e) {
-                //Evitamos que se envíe por defecto
-                e.preventDefault();
-                envio();
 
-
-            });
-
-            function envio() {
-
-                //Creamos un FormData con los datos del mismo formulario
-                var formData = new FormData(document.getElementById("perfil"));
-
-                //Llamamos a la función AJAX de jQuery
-                $.ajax({
-                    //Definimos la URL del archivo al cual vamos a enviar los datos
-                    url: "../controles/modificacionperfil.php",
-                    //Definimos el tipo de método de envío
-                    type: "POST",
-                    //Definimos el tipo de datos que vamos a enviar y recibir
-                    dataType: "HTML",
-                    //Definimos la información que vamos a enviar
-                    data: formData,
-                    //Deshabilitamos el caché
-                    cache: false,
-                    //No especificamos el contentType
-                    contentType: false,
-                    //No permitimos que los datos pasen como un objeto
-                    processData: false,
-                    success: function (response) {
-                        console.log(response);
-                        console.log("paso po aqui");
-
-                    }
-
-                }).done(function () {
-                    //Cuando recibamos respuesta, la mostramos
-//                    window.location.href = '../index.php';
-                });
-            }
-
-        </script>  
 
     </body>
+    
 </html>
