@@ -6,7 +6,7 @@
         ?><script src="../js/perfil.js" type="text/javascript"></script>
     </head>
     <body>
-        
+
         <header>
             <?php include '../barra.php'; ?> 
         </header> 
@@ -158,12 +158,23 @@
                     <form class="form-horizontal" role="form" id="foto"  >
                         <div class="panel panel-info">
                             <div class="panel-heading">Foto </div>
-                            <div style="width: 150px; height: 250px; margin: auto; padding: 15px;">
-                                <img  onclick="" width="200" height="200" class="img-circle" src="../imagenes/perfil/avatar/<?php echo $foto; ?>"></img></div>
-                                <input type="file" value="Cambiar Foto" name="file" />
-                                <input type="hidden" name="idpersona" value="<?php echo $_SESSION['idpersona'] ?>" />
+                            <div style="width: 150px; height: 300px; margin: auto; padding: 15px;">
+                                <img  id="previewing" onclick="" width="250" height="250" class="img-circle" src="../imagenes/perfil/avatar/<?php echo $foto; ?>"></img></div>
+
+                            <div class="form-group">  
+                                <div class="col-md-6 col-xs-6">
+                                    <input type="file" value="Cambiar Foto" name="file" id="file" />
+                                </div>
+
+                            </div>
+
+                            <input type="hidden" name="idpersona" value="<?php echo $_SESSION['idpersona'] ?>" />
                         </div>
                     </form>
+
+
+
+
                     <form class="form-horizontal" role="form" id="predio"  >
                         <div class="panel panel-info">
                             <div class="panel-heading">Detalle de Predio</div>
@@ -181,9 +192,11 @@
                     </form>
                 </div>
             </div>
+
+            <div id="message"></div>
         </div>
 
 
     </body>
-    
+
 </html>
