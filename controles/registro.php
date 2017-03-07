@@ -1,8 +1,8 @@
 <?php
 
 //Conectamos a la base de datos
-require('conexionmysql.php');
-
+require('clases/conexion.php');
+$pdo=new conexion();
 //Obtenemos los datos del formulario de registro
 //$nombrePOST =$_POST["nombreRegistro"];
 $mailPOST = $_POST["mailRegistro"];

@@ -32,8 +32,10 @@
                 $registro = $Verusuario->fetch();
 
                 if (isset($registro['idpersona'])) {
+                    
                     if ((!isset($_GET['id']))) {
                         $_SESSION['idpersona'] = $registro['idpersona'];
+                        $idpersona = $registro['idpersona'];
                     }
                 }
                 $mail = $registro['mail'];
@@ -155,6 +157,15 @@
                     <?php ?>
                 </div>
                 <div class="col-md-5">
+                    <!--****************** foto **********************-->
+                    <?php
+                    if (isset($_SESSION['idpersona'])) {
+                        include '../controles/clases/Avatar.php';
+
+                        $fo = new Avatar();
+                        $foto = $fo->GetFoto(5);
+                    }
+                    ?>
                     <form class="form-horizontal" role="form" id="foto"  >
                         <div class="panel panel-info">
                             <div class="panel-heading">Foto </div>
@@ -172,7 +183,7 @@
                         </div>
                     </form>
 
-
+                    <!--*******************************************************-->
 
 
                     <form class="form-horizontal" role="form" id="predio"  >

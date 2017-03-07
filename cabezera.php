@@ -37,6 +37,7 @@ echo "
  echo " <script src=\"../bootstrap-3.3.5-dist/js/bootstrap.min.js\" type=\"text/javascript\"></script>
         <link href=\"../bootstrap-3.3.5-dist/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\"/>
        <!-- ideally at the bottom of the page -->
+       <script src=\"../jquery/angular.min.js\" type=\"text/javascript\"></script>
 
         ";
 
